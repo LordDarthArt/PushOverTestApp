@@ -1,6 +1,8 @@
 package tk.lorddarthart.pushovertestapp;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,19 +18,23 @@ import android.widget.EditText;
 import static tk.lorddarthart.pushovertestapp.DBPush.savePushToHistory;
 
 import net.pushover.client.PushoverClient;
-import net.pushover.client.PushoverException;
-import net.pushover.client.PushoverMessage;
 import net.pushover.client.PushoverRestClient;
+
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.text.ParseException;
 
 public class SendPushActivity extends AppCompatActivity {
     private CheckBox checkBox;
     private Button btnSend;
-    private EditText etDK, etNTitle, etNT, etMinutes;
+    private EditText etDK, etNTitle, etNT, etMinutes, etDevID;
     private boolean visible = false;
     private PushoverClient client;
     private SQLiteDatabase sqLitePushHistory;
     private DBPush dbPush;
     private TextWatcher textWatcher;
+    private int resultz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +56,7 @@ public class SendPushActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (etDK.getText().length()>0&&etNTitle.getText().length()>0&&etNT.getText().length()>0) {
+                if (etDK.getText().length() > 0 && etNTitle.getText().length() > 0 && etNT.getText().length() > 0) {
                     btnSend.setEnabled(true);
                 }
             }
@@ -62,6 +68,7 @@ public class SendPushActivity extends AppCompatActivity {
         };
 
         etDK = findViewById(R.id.etDK);
+        etDevID = findViewById(R.id.etDevID);
         etNTitle = findViewById(R.id.etNTitle);
         etNT = findViewById(R.id.etNT);
         etMinutes = findViewById(R.id.etMinutes);
@@ -89,14 +96,11 @@ public class SendPushActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    client.pushMessage(PushoverMessage.builderWithApiToken("us76xvzndjtj2ryytv7j9y8fib3ghk")
-                            .setUserId(etDK.getText().toString())
-                            .setTitle(etNTitle.getText().toString())
-                            .setMessage(etNT.getText().toString())
-                            .build());
-                    if (etMinutes.getText().length()>0) {
+                    SendPushOverNotification spon = new SendPushOverNotification();
+                    spon.execute().get();
+                    if (etMinutes.getText().length() > 0) {
                         savePushToHistory(sqLitePushHistory, System.currentTimeMillis()
-                                        +(Long.valueOf(etMinutes.getText().toString())*60000),
+                                        + (Long.valueOf(etMinutes.getText().toString()) * 60000),
                                 etNTitle.getText().toString(), etNT.getText().toString(),
                                 etDK.getText().toString());
                     } else {
@@ -104,12 +108,38 @@ public class SendPushActivity extends AppCompatActivity {
                                 etNTitle.getText().toString(), etNT.getText().toString(),
                                 etDK.getText().toString());
                     }
-                } catch (PushoverException e) {
-                    Snackbar.make(v, "При отправке пуша произошла ошибка", BaseTransientBottomBar.LENGTH_LONG);
                 } catch (Exception e) {
-                    Snackbar.make(v, "Произошла чудовищная ошибка", BaseTransientBottomBar.LENGTH_LONG);
+                    Snackbar.make(v, "Произошла чудовищная ошибка", BaseTransientBottomBar.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        finish();
+        startActivity(intent);
+    }
+
+    protected class SendPushOverNotification extends AsyncTask<Void, Void, Integer> {
+
+        @Override
+        protected Integer doInBackground(Void... voids) {
+            try {
+                if (etDevID.getText().length()>0) {
+                    resultz = new PushOverSend().sendPush("awr7rp2vn8t32aij7adf28kk8bdbby", etDK.getText().toString(), etDevID.getText().toString(), etNTitle.getText().toString(), etNT.getText().toString());
+                } else {
+                    resultz = new PushOverSend().sendPush("awr7rp2vn8t32aij7adf28kk8bdbby", etDK.getText().toString(), etNTitle.getText().toString(), etNT.getText().toString());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 }

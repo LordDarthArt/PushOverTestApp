@@ -11,7 +11,7 @@ public class DBPush extends SQLiteOpenHelper implements BaseColumns {
     public static int DATABASE_VERSION = 1;
 
     public static final String DATABASE_PUSHHISTORY = "pushhistory";
-    public static final String PUSHHISTORY_PUSHID = "pushtitle";
+    public static final String PUSHHISTORY_PUSHID = "pushid";
     public static final String PUSHHISTORY_PUSHTITLE = "pushtitle";
     public static final String PUSHHISTORY_PUSHTEXT = "pushtext";
     public static final String PUSHHISTORY_PUSHTIME = "pushtime";

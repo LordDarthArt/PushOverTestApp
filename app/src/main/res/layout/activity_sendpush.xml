@@ -14,8 +14,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Device Key"
+        android:hint="User Key"
         android:inputType="textPersonName"
+        android:text="us76xvzndjtj2ryytv7j9y8fib3ghk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,9 +29,11 @@
         android:ems="10"
         android:hint="Notification Title"
         android:inputType="textPersonName"
+        android:text="Wow!"
         app:layout_constraintEnd_toEndOf="@+id/etDK"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etDK"
-        app:layout_constraintTop_toBottomOf="@+id/etDK" />
+        app:layout_constraintTop_toBottomOf="@+id/etDevID" />
 
     <EditText
         android:id="@+id/etNT"
@@ -45,6 +48,7 @@
         android:lines="10"
         android:minLines="1"
         android:scrollbars="vertical"
+        android:text="This was amazing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/etDK"
@@ -86,5 +90,18 @@
         app:layout_constraintEnd_toEndOf="@+id/etNT"
         app:layout_constraintStart_toStartOf="@+id/checkBox"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+
+    <EditText
+        android:id="@+id/etDevID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Device Identifier (Optional)"
+        android:inputType="textPersonName"
+        android:text="redminote3 (Android)"
+        app:layout_constraintEnd_toEndOf="@+id/etDK"
+        app:layout_constraintStart_toStartOf="@+id/etDK"
+        app:layout_constraintTop_toBottomOf="@+id/etDK" />
 
 </android.support.constraint.ConstraintLayout>

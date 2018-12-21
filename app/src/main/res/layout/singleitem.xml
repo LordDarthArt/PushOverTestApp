@@ -10,8 +10,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,6 +21,17 @@
             android:id="@+id/clCardLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvPushUK"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tvPushText"
+                app:layout_constraintStart_toStartOf="@+id/tvPushText"
+                app:layout_constraintTop_toBottomOf="@+id/tvPushText" />
 
             <TextView
                 android:id="@+id/tvPushTitle"
@@ -39,9 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
                 android:singleLine="false"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvPushTitle"
                 app:layout_constraintTop_toBottomOf="@+id/tvPushTitle" />
