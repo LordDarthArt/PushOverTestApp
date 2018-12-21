@@ -80,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/shape"
+        android:enabled="false"
         android:text="Отправить"
         android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="@+id/etNT"
