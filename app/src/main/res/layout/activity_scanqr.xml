@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ScanQRActivity">
+
+    <ScrollView
+        android:id="@+id/svScanQR"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/surfaceView">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clScanQR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/etDKScanQR"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:hint="User Key"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/etNTitleScanQR"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Notification Title"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@+id/etDKScanQR"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/etDKScanQR"
+                app:layout_constraintTop_toBottomOf="@+id/etDevIDScanQR" />
+
+            <EditText
+                android:id="@+id/etNTScanQR"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:enabled="false"
+                android:gravity="top|left"
+                android:hint="Notification Text"
+                android:inputType="textMultiLine"
+                android:lines="10"
+                android:minLines="1"
+                android:scrollbars="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/etNTitleScanQR"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/etNTitleScanQR"
+                app:layout_constraintTop_toBottomOf="@+id/etNTitleScanQR" />
+
+            <CheckBox
+                android:id="@+id/checkBoxScanQR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Установить задержку"
+                app:layout_constraintStart_toStartOf="@+id/etNTScanQR"
+                app:layout_constraintTop_toBottomOf="@+id/etNTScanQR" />
+
+            <EditText
+                android:id="@+id/etMinutesScanQR"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:hint="Minutes (Up to 300)"
+                android:inputType="textPersonName"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/checkBoxScanQR"
+                app:layout_constraintEnd_toEndOf="@+id/etNTScanQR"
+                app:layout_constraintStart_toEndOf="@+id/checkBoxScanQR"
+                app:layout_constraintTop_toTopOf="@+id/checkBoxScanQR" />
+
+            <Button
+                android:id="@+id/btnSendScanQR"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shape"
+                android:enabled="false"
+                android:text="Отправить"
+                android:textColor="@drawable/textview_colors"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/etNTScanQR"
+                app:layout_constraintStart_toStartOf="@+id/checkBoxScanQR"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxScanQR" />
+
+            <EditText
+                android:id="@+id/etDevIDScanQR"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="Device Identifier (Optional)"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@+id/etDKScanQR"
+                app:layout_constraintStart_toStartOf="@+id/etDKScanQR"
+                app:layout_constraintTop_toBottomOf="@+id/etDKScanQR" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

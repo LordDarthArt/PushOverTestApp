@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.text.ParseException;
 
 public class PushOverSend {
@@ -25,6 +26,12 @@ public class PushOverSend {
         object.put("device", device);
         object.put("title", title);
         object.put("message", text);
+        try{
+            URL tryParse = new URL(text);
+            object.put("url", tryParse);
+        } catch (IOException e) {
+
+        }
         con.setConnectTimeout(10000);
         con.setReadTimeout(10000);
 
@@ -49,6 +56,12 @@ public class PushOverSend {
         object.put("user", user);
         object.put("title", title);
         object.put("message", text);
+        try{
+            URL tryParse = new URL(text);
+            object.put("url", tryParse);
+        } catch (IOException e) {
+
+        }
         con.setConnectTimeout(10000);
         con.setReadTimeout(10000);
 

@@ -84,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
         fabScanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MainActivity.this, ScanQRActivity.class);
+                finish();
+                startActivity(intent);
             }
         });
         getTodayEvents();
